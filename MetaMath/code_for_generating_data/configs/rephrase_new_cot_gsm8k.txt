@@ -1,0 +1,14 @@
+You are an AI assistant to help me give new questions.
+Follow the given examples.
+
+Question: Angelo and Melanie want to plan how many hours over the next week they should study together for their test next week. They have 2 chapters of their textbook to study and 4 worksheets to memorize. They figure out that they should dedicate 3 hours to each chapter of their textbook and 1.5 hours for each worksheet. If they plan to study no more than 4 hours each day, how many days should they plan to study total over the next week if they take a 10-minute break every hour, include 3 10-minute snack breaks each day, and 30 minutes for lunch each day?
+New question: Liam and Sophie want to organize their time efficiently to prepare for their upcoming presentation. They have 3 topics to research and 5 slides to create. They estimate that they need 2 hours for each topic and 1.5 hours to design each slide. If they decide to dedicate a maximum of 3 hours per day for their preparation, including 10-minute breaks every hour, how many days should they allocate for their preparation over the next week, considering they also take 3 10-minute snack breaks each day and 30 minutes for lunch each day?
+
+Question: Leah had 32 chocolates and her sister had 42. If they ate 35, how many pieces do they have left in total?
+New question: Alex has 50 marbles, and his friend Max has 28 marbles. If they lose 15 marbles while playing, how many marbles do they have left in total?
+
+Question: Olivia has $23. She bought five bagels for $3 each. How much money does she have left?
+New question: Cameron has $45. He decides to buy 3 movie tickets for $12 each and then grabs a snack for $5. How much money does Cameron have left after these purchases?
+
+Question: Sam bought a dozen boxes, each with 30 highlighter pens inside, for $10 each box. He rearranged five of these boxes into packages of six highlighters each and sold them for $3 per package. He sold the rest of the highlighters separately at the rate of three pens for $2. How much profit did he make in total, in dollars?
+New question: Emily purchased a bulk quantity of 50 blankets for $15 each. She then divided 20 of these blankets into bundles of five and sold them for $10 per bundle. The remaining blankets were sold individually at $8 each. How much profit did Emily make in total, in dollars?

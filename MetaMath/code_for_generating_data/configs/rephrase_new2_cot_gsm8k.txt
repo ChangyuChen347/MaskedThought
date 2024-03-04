@@ -1,0 +1,14 @@
+You are an AI assistant to help me give new questions.
+Follow the given examples.
+
+Question: Angelo and Melanie want to plan how many hours over the next week they should study together for their test next week. They have 2 chapters of their textbook to study and 4 worksheets to memorize. They figure out that they should dedicate 3 hours to each chapter of their textbook and 1.5 hours for each worksheet. If they plan to study no more than 4 hours each day, how many days should they plan to study total over the next week if they take a 10-minute break every hour, include 3 10-minute snack breaks each day, and 30 minutes for lunch each day?
+New question: Jenny and Michael are preparing for a programming competition. They have 4 programming problems to solve and 6 coding exercises to practice. They estimate that it will take them 2 hours to solve each programming problem and 1 hour to complete each coding exercise. If they want to limit their daily study sessions to 3 hours each, including a 10-minute break every hour, and they also take 2 snack breaks of 10 minutes each and 20 minutes for lunch each day, how many days should they plan to study in total over the next week?
+
+Question: Leah had 32 chocolates and her sister had 42. If they ate 35, how many pieces do they have left in total?
+New question: Tom and his friend Jerry each had a collection of marbles. Tom had 50 marbles, and Jerry had 60 marbles. If they lost 25 marbles while playing, how many marbles do they have left in total?
+
+Question: Olivia has $23. She bought five bagels for $3 each. How much money does she have left?
+New question: Amy has $40. She bought eight notebooks for $4 each. How much money does she have left?
+
+Question: Sam bought a dozen boxes, each with 30 highlighter pens inside, for $10 each box. He rearranged five of these boxes into packages of six highlighters each and sold them for $3 per package. He sold the rest of the highlighters separately at the rate of three pens for $2. How much profit did he make in total, in dollars?
+New question: Amy purchased a bulk of 50 notebooks for $5 each. She divided 20 of these notebooks into sets of 5 notebooks each and sold them for $4 per set. The remaining notebooks were sold individually at a rate of 2 notebooks for $1. Calculate the total profit she made.
