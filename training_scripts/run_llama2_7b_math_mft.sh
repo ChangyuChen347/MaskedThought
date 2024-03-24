@@ -5,7 +5,7 @@ export GLOO_SOCKET_IFNAME="lo"
 export NCCL_SOCKET_IFNAME="lo"
 export exp_name='my_llama2_7b_math_mft'
 export base_model_name=Llama-2-7b-hf
-python3 -m torch.distributed.launch --master_addr ${MASTER_ADDR} --master_port ${MASTER_PORT} --nproc_per_node=8 --use_env main_llama_830.py \
+python3 -m torch.distributed.launch --master_addr ${MASTER_ADDR} --master_port ${MASTER_PORT} --nproc_per_node=8 --use_env main.py \
     --do_train \
     --scene llama_generation \
     --report_to none \
@@ -34,8 +34,8 @@ python3 -m torch.distributed.launch --master_addr ${MASTER_ADDR} --master_port $
     --tf32 True \
     --fsdp "full_shard auto_wrap" \
     --fsdp_transformer_layer_cls_to_wrap 'LlamaDecoderLayer' \
-    --output_dir '.' \
+    --output_dir ./${exp_name} \
     --max_mask_rate 0.2 \
     --update_mask_rate True \
     --mask_rate_warmup  0.66 \
-    --save_steps 117
+    --save_strategy "epoch" \

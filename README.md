@@ -4,6 +4,7 @@ This repository contains the code of for our paper:<br>
 **Masked Thought: Simply Masking Partial Reasoning Steps Can Improve
 Mathematical Reasoning Learning of Language Models**<br>
 *Changyu Chen, Xiting Wang, Ting-En Lin, Ang Lv, Yuchuan Wu, Xin Gao, Ji-Rong Wen, Rui Yan, Yongbin Li* <br>
+Paper: https://arxiv.org/abs/2403.02178 <br>
 
 
 ### 1. Overview
@@ -25,7 +26,11 @@ We propose to use a simple regularization method **Masked thought Fine-Tuning (M
 conda create -n mask python=3.10
 conda activate mask
 pip install -r requirements.txt
-pip install torch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 --index-url https://download.pytorch.org/whl/cu118
+pip install torch==2.1.0 xformers torchvision==0.16.0 torchaudio==2.1.0 --index-url https://download.pytorch.org/whl/cu118
+# install vllm
+export VLLM_VERSION=0.2.2
+export PYTHON_VERSION=310
+pip install https://github.com/vllm-project/vllm/releases/download/v${VLLM_VERSION}/vllm-${VLLM_VERSION}+cu118-cp${PYTHON_VERSION}-cp${PYTHON_VERSION}-manylinux1_x86_64.whl torch==2.1.0 transformers==4.36.2
 ```
 #### 2) Train
 You can start with training GSM8K on Llama-2-7b with the following command, it will take about one hour with 8 NVIDIA
@@ -37,7 +42,7 @@ bash training_scripts/run_llama2_7b_gsm8k_mft.sh
 The evaluation take 1 minute using vllm and 1 single A100 GPU.
 ```bash
 # exp_name is the experiment identifier in your training script.
-bash evluation/run_gen_math_greedy_vllm_1.sh ${exp_name}
+bash evaluation/run_gen_math_greedy_vllm_1.sh ${exp_name}
 python evaluation/get_gsm8k_res.py --model ${exp_name}
 ```
 
@@ -58,6 +63,13 @@ def mask_target_tokens(input_ids, sources_tokenized, mask_probability, MASK_INDE
 input_ids = mask_target_tokens(input_ids, sources_tokenized, _mask_probability, MASK_INDEX)
 ```
 
-
-
+### 5. Citation
+```bibtex
+@article{chen2024masked,
+  title={Masked Thought: Simply Masking Partial Reasoning Steps Can Improve Mathematical Reasoning Learning of Language Models},
+  author={Chen, Changyu and Wang, Xiting and Lin, Ting-En and Lv, Ang and Wu, Yuchuan and Gao, Xin and Wen, Ji-Rong and Yan, Rui and Li, Yongbin},
+  journal={arXiv preprint arXiv:2403.02178},
+  year={2024}
+}
+```
 

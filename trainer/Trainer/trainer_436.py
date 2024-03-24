@@ -9,7 +9,7 @@ from transformers import Trainer as BaseTrainer
 # from trainer.Trainer.trainer import Trainer as BaseTrainer
 # from trainer.Trainer.trainer import MetricsCalculator, AmlLogger
 from data.data_reader import CustomizeCollator
-import trainer.Metrics as Metrics
+# import trainer.Metrics as Metrics
 import trainer.Outputter as Outputter
 from transformers.modeling_utils import unwrap_model
 from transformers import logging
@@ -685,42 +685,42 @@ class Trainer(BaseTrainer):
             #         logger.info('save to {}, epoch: {}'.format(save_path + '_epoch' + str(epoch), self.state.epoch))
             #         unwrap_model(model).save_pretrained(save_path + '_epoch' + str(epoch))
             #         self.tokenizer.save_pretrained(save_path + '_epoch' + str(epoch))
-            if not args.not_save:
-                if args.zero3:
-                    output_dir = args.output_dir
-                    if args.local_rank <= 0:
-                        if not os.path.exists(output_dir + '/' + args.exp_name):
-                            os.makedirs(output_dir + '/' + args.exp_name)
-                    save_path = output_dir + '/' + args.exp_name + '/_model.{}_{}'.format(self.state.global_step, step)
-                    # logger.info('save to {}, epoch: {}'.format(save_path, self.state.epoch))
-                    logger.info('save to {}, epoch: {}'.format(save_path + '_epoch' + str(epoch), self.state.epoch))
-                    self.accelerator.wait_for_everyone()
-                    if self.accelerator.is_main_process:
-                        self.tokenizer.save_pretrained(save_path + '_epoch' + str(epoch))
-                    unwrapped_model = self.accelerator.unwrap_model(model)
-                    state_dict = self.accelerator.get_state_dict(model)
-                    unwrapped_model.save_pretrained(
-                        save_path + '_epoch' + str(epoch), is_main_process=self.accelerator.is_main_process,
-                        save_function=self.accelerator.save, state_dict=state_dict
-                    )
-                else:
-
-                    output_dir = args.output_dir
-                    if args.local_rank <= 0:
-                        if not os.path.exists(output_dir + '/' + args.exp_name):
-                            os.makedirs(output_dir + '/' + args.exp_name)
-                    save_path = output_dir + '/' + args.exp_name + '/_model.{}_{}'.format(self.state.global_step,
-                                step)
-
-                    def safe_save_model_for_hf_trainer(trainer, output_dir):
-                        """Collects the state dict and dump to disk."""
-                        state_dict = trainer.model.state_dict()
-
-                        cpu_state_dict = {key: value.cpu() for key, value in state_dict.items()}
-                        del state_dict
-                        trainer._save(output_dir, state_dict=cpu_state_dict)  # noqa
-
-                    safe_save_model_for_hf_trainer(trainer=self, output_dir=save_path + '_epoch' + str(epoch))
+            # if not args.not_save:
+            #     if args.zero3:
+            #         output_dir = args.output_dir
+            #         if args.local_rank <= 0:
+            #             if not os.path.exists(output_dir + '/' + args.exp_name):
+            #                 os.makedirs(output_dir + '/' + args.exp_name)
+            #         save_path = output_dir + '/' + args.exp_name + '/_model.{}_{}'.format(self.state.global_step, step)
+            #         # logger.info('save to {}, epoch: {}'.format(save_path, self.state.epoch))
+            #         logger.info('save to {}, epoch: {}'.format(save_path + '_epoch' + str(epoch), self.state.epoch))
+            #         self.accelerator.wait_for_everyone()
+            #         if self.accelerator.is_main_process:
+            #             self.tokenizer.save_pretrained(save_path + '_epoch' + str(epoch))
+            #         unwrapped_model = self.accelerator.unwrap_model(model)
+            #         state_dict = self.accelerator.get_state_dict(model)
+            #         unwrapped_model.save_pretrained(
+            #             save_path + '_epoch' + str(epoch), is_main_process=self.accelerator.is_main_process,
+            #             save_function=self.accelerator.save, state_dict=state_dict
+            #         )
+            #     else:
+            #
+            #         output_dir = args.output_dir
+            #         if args.local_rank <= 0:
+            #             if not os.path.exists(output_dir + '/' + args.exp_name):
+            #                 os.makedirs(output_dir + '/' + args.exp_name)
+            #         save_path = output_dir + '/' + args.exp_name + '/_model.{}_{}'.format(self.state.global_step,
+            #                     step)
+            #
+            #         def safe_save_model_for_hf_trainer(trainer, output_dir):
+            #             """Collects the state dict and dump to disk."""
+            #             state_dict = trainer.model.state_dict()
+            #
+            #             cpu_state_dict = {key: value.cpu() for key, value in state_dict.items()}
+            #             del state_dict
+            #             trainer._save(output_dir, state_dict=cpu_state_dict)  # noqa
+            #
+            #         safe_save_model_for_hf_trainer(trainer=self, output_dir=save_path + '_epoch' + str(epoch))
 
 
             if DebugOption.TPU_METRICS_DEBUG in self.args.debug:

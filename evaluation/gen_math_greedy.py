@@ -2,6 +2,9 @@
 # import models
 import torch
 import transformers
+import os
+import sys
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from transformers import logging
 from config.parse_args import *
 from data.data_reader import *
@@ -13,8 +16,8 @@ logger = logging.get_logger(__name__)
 logger.setLevel('INFO')
 local_logging.basicConfig(format="[%(levelname)s|%(filename)s:%(lineno)s] %(asctime)s >> %(message)s",level=logging.INFO)
 
-from peft import get_peft_config, get_peft_model, PeftModel, LoraConfig, TaskType, prepare_model_for_int8_training, prepare_model_for_kbit_training
-from data.tokenizer_utils import prepare_tokenizer
+from peft import get_peft_config, get_peft_model, PeftModel, LoraConfig, TaskType, prepare_model_for_kbit_training
+# from data.tokenizer_utils import prepare_tokenizer
 from concurrent.futures import ThreadPoolExecutor, wait, FIRST_COMPLETED, as_completed, ALL_COMPLETED
 DEFAULT_PAD_TOKEN = "[PAD]"
 DEFAULT_EOS_TOKEN = "</s>"

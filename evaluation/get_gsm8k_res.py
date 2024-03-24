@@ -6,7 +6,7 @@ parser.add_argument('--model', type=str)
 args = parser.parse_args()
 args.model = args.model.replace('/','')
 x = []
-tmp = open('eval_output/llama/math/predict_{}_{}.json{}'.format(args.type, args.model)).readlines()
+tmp = open('eval_output/llama/math/predict_{}_{}.json'.format(args.type, args.model)).readlines()
 x += tmp
 
 import json
@@ -45,7 +45,7 @@ all_bleus = []
 length_accuracy_data = []
 for t in x:
     json_data = json.loads(t)
-    suffix = json_data['suffix'][0]
+    suffix = json_data['target'][0]
     gold = extract_answer(suffix)
     flag = False
     for pred in json_data['kd_data']:
