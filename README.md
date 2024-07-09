@@ -6,19 +6,22 @@ Mathematical Reasoning Learning of Language Models**<br>
 *Changyu Chen, Xiting Wang, Ting-En Lin, Ang Lv, Yuchuan Wu, Xin Gao, Ji-Rong Wen, Rui Yan, Yongbin Li* <br>
 Paper: https://arxiv.org/abs/2403.02178 <br>
 
-
-### 1. Overview
+### 1. Models and Results
+| Model                                                                                                               | GSM8K | MATH  |
+|-------------------------------------------------------------------------------------------------|-------|-------|
+| [adalaw/MAmmoTH-7B-Mistral-MFT](https://huggingface.co/adalaw/MAmmoTH-7B-Mistral-MFT)        | **77.10** |   **41.2**    |
+| [TIGER-Lab/MAmmoTH-7B-Mistral-SFT](https://huggingface.co/TIGER-Lab/MAmmoTH-7B-Mistral)          | 75.00 | 40.0  |
+| [adalaw/MetaMath-Mistral-7B-MFT](https://huggingface.co/adalaw/MetaMath-Mistral-7B-MFT)                                                          | **79.90** | **29.0**  |
+| [meta-math/MetaMath-Mistral-7B-SFT](https://huggingface.co/meta-math/MetaMath-Mistral-7B)                                                        | 77.70 | 28.2  |
+| [adalaw/Llama2-7B-GSM8K-MFT](https://huggingface.co/adalaw/Llama2-7B-GSM8K-MFT) | **47.3**  | - |
+| [adalaw/Llama2-7B-GSM8K-SFT](https://huggingface.co/adalaw/Llama2-7B-GSM8K-SFT) | 42.8  | - |
+### 2. Overview
 
 We propose to use a simple regularization method **Masked thought Fine-Tuning (MFT)** for the supervised fine-tuning of mathematical reasoning data.
 <div  align="center">
  <img src="overview.png" width = "550" alt="d" align=center />
 </div>
 
-### 2. Main results
-
-<div  align="center">
- <img src="main_res.png" width = "550" alt="d" align=center />
-</div>
 
 ### 3. Quick Start
 #### 1) Installation
@@ -41,9 +44,9 @@ bash training_scripts/run_llama2_7b_gsm8k_mft.sh
 #### 3) Evaluation
 The evaluation take 1 minute using vllm and 1 single A100 GPU.
 ```bash
-# exp_name is the experiment identifier in your training script.
-bash evaluation/run_gen_math_greedy_vllm_1.sh ${exp_name}
-python evaluation/get_gsm8k_res.py --model ${exp_name}
+# exp_name is the save path in your training script.
+bash evaluation/run_gen_math_greedy_vllm_1.sh ${model_path}
+python evaluation/get_gsm8k_res.py --model ${model_path}
 ```
 
 For training and evaluation on other datasets and models, you can refer to ```./training_scripts```, ```./MetaMath``` and ```./MAmmoTH```.
