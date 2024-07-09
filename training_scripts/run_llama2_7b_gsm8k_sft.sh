@@ -38,3 +38,4 @@ python3 -m torch.distributed.launch --master_addr ${MASTER_ADDR} --master_port $
     --update_mask_rate False \
     --mask_rate_warmup  0.66 \
     --save_strategy "epoch" \
+    --mask_input False 
